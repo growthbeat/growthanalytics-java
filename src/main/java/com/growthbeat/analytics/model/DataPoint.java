@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.http.client.utils.DateUtils;
 import org.codehaus.jackson.type.TypeReference;
 
 import com.growthbeat.Context;
@@ -19,9 +20,9 @@ public class DataPoint extends Model {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("dataPointQuery", dataPointQuery);
 		if (begin != null)
-			params.put("begin", begin);
+			params.put("begin", DateUtils.formatDate(begin, ISO_8601_DATETIME_FORMAT));
 		if (end != null)
-			params.put("end", end);
+			params.put("end", DateUtils.formatDate(end, ISO_8601_DATETIME_FORMAT));
 
 		return get(context, "/1/data_points", params, new TypeReference<List<DataPoint>>() {
 		});
