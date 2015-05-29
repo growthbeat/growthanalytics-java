@@ -38,8 +38,6 @@ public class JsonFilterQueryDeserializer extends JsonDeserializer<FilterQuery> {
 		}
 
 		switch (type) {
-		case time:
-			return JsonUtils.deserialize(json, TimeFilterQuery.class);
 		case segment:
 			return JsonUtils.deserialize(json, SegmentFilterQuery.class);
 		case property:

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.growthbeat.analytics.query.Operator;
 import com.growthbeat.analytics.query.calculation.CalculationQuery;
 import com.growthbeat.analytics.query.filter.FilterQuery;
+import com.growthbeat.analytics.query.time.TimeQuery;
 
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class EventSegmentQuery extends SegmentQuery {
@@ -12,6 +13,10 @@ public class EventSegmentQuery extends SegmentQuery {
 	private static final long serialVersionUID = 1L;
 
 	private String eventId;
+
+	private TimeQuery begin;
+
+	private TimeQuery end;
 
 	private CalculationQuery calculationQuery;
 
@@ -26,9 +31,12 @@ public class EventSegmentQuery extends SegmentQuery {
 		setType(SegmentQueryType.event);
 	}
 
-	public EventSegmentQuery(String eventId, CalculationQuery calculationQuery, Operator operator, double value, FilterQuery filterQuery) {
+	public EventSegmentQuery(String eventId, TimeQuery begin, TimeQuery end, CalculationQuery calculationQuery, Operator operator,
+			double value, FilterQuery filterQuery) {
 		this();
 		setEventId(eventId);
+		setBegin(begin);
+		setEnd(end);
 		setCalculationQuery(calculationQuery);
 		setOperator(operator);
 		setValue(value);
@@ -41,6 +49,22 @@ public class EventSegmentQuery extends SegmentQuery {
 
 	public void setEventId(String eventId) {
 		this.eventId = eventId;
+	}
+
+	public TimeQuery getBegin() {
+		return begin;
+	}
+
+	public void setBegin(TimeQuery begin) {
+		this.begin = begin;
+	}
+
+	public TimeQuery getEnd() {
+		return end;
+	}
+
+	public void setEnd(TimeQuery end) {
+		this.end = end;
 	}
 
 	public CalculationQuery getCalculationQuery() {
