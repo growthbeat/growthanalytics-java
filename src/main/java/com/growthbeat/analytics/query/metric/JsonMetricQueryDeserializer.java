@@ -42,8 +42,6 @@ public class JsonMetricQueryDeserializer extends JsonDeserializer<MetricQuery> {
 			return JsonUtils.deserialize(json, ConstantMetricQuery.class);
 		case event:
 			return JsonUtils.deserialize(json, EventMetricQuery.class);
-		case segment:
-			return JsonUtils.deserialize(json, SegmentMetricQuery.class);
 		case metric:
 			return JsonUtils.deserialize(json, MetricMetricQuery.class);
 		case add:
