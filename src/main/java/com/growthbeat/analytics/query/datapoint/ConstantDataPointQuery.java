@@ -15,6 +15,7 @@ public class ConstantDataPointQuery extends DataPointQuery {
 
 	public ConstantDataPointQuery() {
 		super();
+		setType(DataPointQueryType.constant);
 	}
 
 	public ConstantDataPointQuery(List<DataPoint> dataPoints) {
