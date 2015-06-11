@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.growthbeat.analytics.query.Operator;
 import com.growthbeat.analytics.query.calculation.CalculationQuery;
 import com.growthbeat.analytics.query.filter.FilterQuery;
+import com.growthbeat.analytics.query.time.TimeQuery;
 
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class EventSegmentQuery extends SegmentQuery {
@@ -14,6 +15,10 @@ public class EventSegmentQuery extends SegmentQuery {
 	private String eventId;
 
 	private CalculationQuery calculationQuery;
+
+	private TimeQuery begin;
+
+	private TimeQuery end;
 
 	private Operator operator;
 
@@ -35,6 +40,12 @@ public class EventSegmentQuery extends SegmentQuery {
 		setFilterQuery(filterQuery);
 	}
 
+	public EventSegmentQuery(String eventId, CalculationQuery calculationQuery, Operator operator, TimeQuery begin, TimeQuery end, double value, FilterQuery filterQuery) {
+		this(eventId, calculationQuery, operator, value, filterQuery);
+		setBegin(begin);
+		setEnd(end);
+	}
+	
 	public String getEventId() {
 		return eventId;
 	}
@@ -73,6 +84,22 @@ public class EventSegmentQuery extends SegmentQuery {
 
 	public void setFilterQuery(FilterQuery filterQuery) {
 		this.filterQuery = filterQuery;
+	}
+
+	public TimeQuery getBegin() {
+		return begin;
+	}
+
+	public void setBegin(TimeQuery begin) {
+		this.begin = begin;
+	}
+
+	public TimeQuery getEnd() {
+		return end;
+	}
+
+	public void setEnd(TimeQuery end) {
+		this.end = end;
 	}
 
 }
