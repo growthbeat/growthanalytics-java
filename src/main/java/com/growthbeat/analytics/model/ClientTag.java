@@ -32,9 +32,11 @@ public class ClientTag extends Model {
 		});
 	}
 
-	public static List<ClientTag> findByTagId(String tagId, Context context) {
+	public static List<ClientTag> findByTagId(String tagId, Interger limit, Context context) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("tagId", tagId);
+		if (limit != null)
+			params.put("limit", limit);
 
 		return get(context, "/1/client_tags", params, new TypeReference<List<ClientTag>>() {
 		});
