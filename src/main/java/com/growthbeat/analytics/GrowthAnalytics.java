@@ -62,8 +62,9 @@ public class GrowthAnalytics {
 		return ClientEvent.create(clientId, eventId, properties, context);
 	}
 
-	public ClientSegment findClientSegmentByClientIdAndSegmentId(String clientId, String segmentId) {
-		return ClientSegment.findByClientIdAndSegmentId(clientId, segmentId, context);
+	public ClientSegment findClientSegmentByClientIdAndSegmentId(String clientId, String segmentId, 
+			Date begin, Date end, boolean cacheable) {
+		return ClientSegment.findByClientIdAndSegmentId(clientId, segmentId, begin, end, cacheable, context);
 	}
 
 	public ClientTag findClientTagByClientIdAndTagId(String clientId, String tagId) {
