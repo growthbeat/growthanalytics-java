@@ -3,10 +3,10 @@
   <groupId>com.growthbeat.analytics</groupId>
   <artifactId>growthanalytics-java</artifactId>
   <versioning>
-    <release>0.1.12</release>
+    <release>0.1.13</release>
     <versions>
-      <version>0.1.12</version>
+      <version>0.1.13</version>
     </versions>
-    <lastUpdated>20151014170935</lastUpdated>
+    <lastUpdated>20151125071033</lastUpdated>
   </versioning>
 </metadata>
