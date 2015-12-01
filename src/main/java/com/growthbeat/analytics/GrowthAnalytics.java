@@ -83,7 +83,11 @@ public class GrowthAnalytics {
 	}
 
 	public List<DataPoint> findDataPointsByDataPointQuery(DataPointQuery dataPointQuery, Date begin, Date end, boolean cacheable) {
-		return DataPoint.findByDataPointQuery(dataPointQuery, begin, end, cacheable, context);
+		return DataPoint.findByDataPointQuery(dataPointQuery, begin, end, cacheable, false, context);
+	}
+
+	public List<DataPoint> findRealtimeDataPointsByDataPointQuery(DataPointQuery dataPointQuery, Date begin, Date end) {
+		return DataPoint.findByDataPointQuery(dataPointQuery, begin, end, false, true, context);
 	}
 
 	public Event findEventById(String id) {
