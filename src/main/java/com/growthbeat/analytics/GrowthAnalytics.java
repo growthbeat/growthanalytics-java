@@ -54,8 +54,8 @@ public class GrowthAnalytics {
 	}
 
 	public List<ClientEvent> findClientEventsByClientIdAndEventId(String clientId, String eventId, Date begin, Date end,
-			String exclusiveId, Order order, Integer limit) {
-		return ClientEvent.findByClientIdAndEventId(clientId, eventId, begin, end, exclusiveId, order, limit, context);
+			String exclusiveId, Order order, FilterQuery filterQuery, Integer limit) {
+		return ClientEvent.findByClientIdAndEventId(clientId, eventId, begin, end, exclusiveId, order, filterQuery, limit, context);
 	}
 
 	public ClientEvent createClientEvent(String clientId, String eventId, Map<String, String> properties) {
@@ -130,10 +130,11 @@ public class GrowthAnalytics {
 		return Segment.findClientIdsBySegmentQuery(applicationId, segmentQuery, begin, end, cacheable, context);
 	}
 
-	public Set<String> findClientIdsByRealtimeSegmentQuery(String applicationId, SegmentQuery segmentQuery, Date begin, Date end, boolean cacheable) {
+	public Set<String> findClientIdsByRealtimeSegmentQuery(String applicationId, SegmentQuery segmentQuery, Date begin, Date end,
+			boolean cacheable) {
 		return Segment.findClientIdsByRealtimeSegmentQuery(applicationId, segmentQuery, begin, end, context);
 	}
-	
+
 	public Segment updateSegment(String id, String name, String description, SegmentQuery query) {
 		return Segment.update(id, name, description, query, context);
 	}

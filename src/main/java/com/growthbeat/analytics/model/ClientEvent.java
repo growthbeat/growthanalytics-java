@@ -41,7 +41,7 @@ public class ClientEvent extends ClientRequest {
 	}
 
 	public static List<ClientEvent> findByClientIdAndEventId(String clientId, String eventId, Date begin, Date end, String exclusiveId,
-			Order order, Integer limit, Context context) {
+			Order order, FilterQuery filterQuery, Integer limit, Context context) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("clientId", clientId);
 		params.put("eventId", eventId);
@@ -51,6 +51,8 @@ public class ClientEvent extends ClientRequest {
 			params.put("exclusiveId", exclusiveId);
 		if (order != null)
 			params.put("order", order.toString());
+		if (filterQuery != null)
+			params.put("filterQuery", JsonUtils.serialize(filterQuery));
 		if (limit != null)
 			params.put("limit", limit);
 		return get(context, "/1/client_events", params, new TypeReference<List<ClientEvent>>() {
